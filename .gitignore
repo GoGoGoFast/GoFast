@@ -1,0 +1,103 @@
+# Golang
+/bin/
+/pkg/
+/vendor/
+/*.exe
+/*.exe~
+/*.dll
+/*.so
+/*.dylib
+/*.test
+*.out
+
+# IntelliJ IDEA / GoLand
+.idea/
+*.iml
+*.iws
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/libraries
+.idea/shelf/
+/out/
+.idea/vcs.xml
+.idea/.gitignore
+.idea/assetWizardSettings.xml
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# NFS mounts
+/.nfs*
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Windows image file caches
+*.stackdump
+
+# Folder config file
+$tf/
+
+# Recycle Bin used on file shares
+*.vscode/*
+*.visualstudio/*
+*.log
+.vscode/
+
+# Git related
+.git/
+*.log
+*.bak
+*.swp
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# Node modules
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Go modules
+/go.mod
+/go.sum
+
+# Debug files
+*.test
+*.prof
+*.cov
+
+# Compiled binary
+main

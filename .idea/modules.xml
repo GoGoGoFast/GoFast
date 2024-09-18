@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/VeloCore.iml" filepath="$PROJECT_DIR$/.idea/VeloCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GoDot.iml" filepath="$PROJECT_DIR$/.idea/GoDot.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-VeloCore/                # 项目根目录
+GoDot/                # 项目根目录
 ├── README.md            # 项目介绍
 ├── LICENSE              # 许可证
 ├── go.mod               # Go 模块定义文件

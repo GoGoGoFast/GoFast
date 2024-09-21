@@ -1,6 +1,5 @@
 # Golang
 /bin/
-/pkg/
 /vendor/
 /*.exe
 /*.exe~
@@ -98,6 +97,3 @@ venv/
 *.test
 *.prof
 *.cov
-
-# Compiled binary
-main

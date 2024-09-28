@@ -3,6 +3,7 @@ package arrayutil
 import (
 	"errors"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -158,10 +159,15 @@ func IsArray(arr interface{}) bool {
 
 // ToString 将切片转为字符串
 func ToString(arr interface{}, sep string) string {
-	v := reflect.ValueOf(arr)
-	var result []string
-	for i := 0; i < v.Len(); i++ {
-		result = append(result, reflect.ValueOf(v.Index(i).Interface()).String())
-	}
-	return strings.Join(result, sep)
+    v := reflect.ValueOf(arr)
+    var result []string
+    switch v.Kind() {
+    case reflect.Slice:
+       for i := 0; i < v.Len(); i++ {
+          if intSlice, ok := v.Index(i).Interface().([]int); ok {
+             result = append(result, strconv.Itoa(intSlice[i]))
+          }
+       }
+    }
+    return strings.Join(result, sep)
 }

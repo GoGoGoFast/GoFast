@@ -1,4 +1,4 @@
-package reUtil
+package reutil
 
 import (
 	"fmt"

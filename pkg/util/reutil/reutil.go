@@ -89,12 +89,13 @@ func ReplaceAll(content, regex, replacementTemplate string) (string, error) {
 	}
 
 	result := pattern.ReplaceAllStringFunc(content, func(match string) string {
-		// 使用分组替换
+		// 每次匹配创建新的模板副本
+		replacement := replacementTemplate
 		matches := pattern.FindStringSubmatch(match)
 		for i := 1; i < len(matches); i++ {
-			replacementTemplate = strings.ReplaceAll(replacementTemplate, fmt.Sprintf("$%d", i), matches[i])
+			replacement = strings.ReplaceAll(replacement, fmt.Sprintf("$%d", i), matches[i])
 		}
-		return replacementTemplate
+		return replacement
 	})
 	return result, nil
 }

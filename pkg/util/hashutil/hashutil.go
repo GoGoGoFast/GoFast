@@ -1,6 +1,7 @@
 package hashutil
 
 import (
+	"fmt"
 	"hash/crc32"
 	"hash/fnv"
 	"log"
@@ -32,7 +33,9 @@ func AdditiveHash(input string) uint32 {
 func RotatingHash(input string) uint32 {
 	var hash uint32
 	for i := 0; i < len(input); i++ {
+		fmt.Printf("Before iteration %d: hash = %d\n", i, hash)
 		hash = (hash << 4) ^ (hash >> 28) ^ uint32(input[i])
+		fmt.Printf("After iteration %d: hash = %d\n", i, hash)
 	}
 	return hash
 }

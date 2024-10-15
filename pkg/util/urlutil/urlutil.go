@@ -2,7 +2,6 @@ package urlutil
 
 import (
 	"net/url"
-	"path/filepath"
 )
 
 // URLUtil 提供了URL操作的实用工具。
@@ -51,9 +50,22 @@ func (u *URLUtil) Normalize(urlStr string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	normalizedPath := filepath.Clean(parsedURL.Path)
+
+	// 手动移除多余的斜杠
+	normalizedPath := normalizePath(parsedURL.Path)
 	parsedURL.Path = normalizedPath
 	return parsedURL.String(), nil
+}
+
+// normalizePath removes redundant slashes from a URL path.
+func normalizePath(path string) string {
+	normPath := ""
+	for i := 0; i < len(path); i++ {
+		if !(path[i] == '/' && i > 0 && path[i-1] == '/') {
+			normPath += string(path[i])
+		}
+	}
+	return normPath
 }
 
 // Encode 进行URL编码。

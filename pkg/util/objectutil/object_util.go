@@ -354,18 +354,32 @@ func FilterFields(obj interface{}, condition func(fieldName string, fieldValue i
 func Convert(src interface{}, dstType reflect.Type) (interface{}, error) {
 	srcVal := reflect.ValueOf(src)
 	if srcVal.Kind() == reflect.Ptr {
-		srcVal = srcVal.Elem()
+		srcVal = srcVal.Elem() // 解引用指针
 	}
 
 	dstVal := reflect.New(dstType).Elem()
-	for i := 0; i < srcVal.NumField(); i++ {
-		srcField := srcVal.Field(i)
+
+	// 遍历目标结构体的字段
+	for i := 0; i < dstVal.NumField(); i++ {
 		dstField := dstVal.Field(i)
-		if dstField.CanSet() && srcField.IsValid() {
-			dstField.Set(srcField)
+		dstFieldType := dstVal.Type().Field(i) // 目标字段的类型信息
+
+		// 尝试在源结构体中找到匹配的字段
+		srcField := srcVal.FieldByName(dstFieldType.Name)
+
+		// 如果源字段存在并且目标字段可以设置
+		if srcField.IsValid() && dstField.CanSet() {
+			// 如果字段是指针类型，需要进一步处理
+			if dstField.Kind() == reflect.Ptr {
+				dstField.Set(reflect.New(dstField.Type().Elem()))
+				dstField.Elem().Set(srcField)
+			} else {
+				dstField.Set(srcField)
+			}
 		}
 	}
 
+	// 返回指向新对象的指针
 	return dstVal.Addr().Interface(), nil
 }
 

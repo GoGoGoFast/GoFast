@@ -4,9 +4,11 @@ package hexutil
 
 import (
 	"encoding/hex"
+	"fmt"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
 	"golang.org/x/text/transform"
+	"strconv"
 )
 
 // EncodeHexStr 将字符串编码为指定编码的十六进制表示。如果未指定编码，则默认为 UTF-8。
@@ -64,4 +66,52 @@ func DecodeHexStr(hexStr string, enc ...encoding.Encoding) (string, error) {
 		return "", err
 	}
 	return string(decodedBytes), nil
+}
+
+// EncodeBinaryStr 将字符串编码为二进制表示。
+// EncodeBinaryStr encodes a string into its binary representation.
+func EncodeBinaryStr(str string) string {
+	var binaryStr string
+	for _, c := range []byte(str) {
+		binaryStr += fmt.Sprintf("%08b", c)
+	}
+	return binaryStr
+}
+
+// DecodeBinaryStr 将二进制字符串解码为原始字符串表示。
+// DecodeBinaryStr decodes a binary string into its original string representation.
+func DecodeBinaryStr(binaryStr string) (string, error) {
+	var bytes []byte
+	for i := 0; i < len(binaryStr); i += 8 {
+		byteVal, err := strconv.ParseUint(binaryStr[i:i+8], 2, 8)
+		if err != nil {
+			return "", err
+		}
+		bytes = append(bytes, byte(byteVal))
+	}
+	return string(bytes), nil
+}
+
+// EncodeOctalStr 将字符串编码为八进制表示。
+// EncodeOctalStr encodes a string into its octal representation.
+func EncodeOctalStr(str string) string {
+	var octalStr string
+	for _, c := range []byte(str) {
+		octalStr += fmt.Sprintf("%03o", c)
+	}
+	return octalStr
+}
+
+// DecodeOctalStr 将八进制字符串解码为原始字符串表示。
+// DecodeOctalStr decodes an octal string into its original string representation.
+func DecodeOctalStr(octalStr string) (string, error) {
+	var bytes []byte
+	for i := 0; i < len(octalStr); i += 3 {
+		byteVal, err := strconv.ParseUint(octalStr[i:i+3], 8, 8)
+		if err != nil {
+			return "", err
+		}
+		bytes = append(bytes, byte(byteVal))
+	}
+	return string(bytes), nil
 }

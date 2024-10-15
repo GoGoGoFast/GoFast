@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-// 压缩目录或文件
+// Zip 压缩目录或文件
 func Zip(source, target string, includeBaseDir bool) error {
 	// 创建目标zip文件
 	zipFile, err := os.Create(target)
@@ -155,7 +155,7 @@ func writeFileToZip(path string, writer io.Writer) error {
 	return nil
 }
 
-// 解压文件
+// Unzip 解压文件
 func Unzip(source, target string) error {
 	reader, err := zip.OpenReader(source)
 	if err != nil {

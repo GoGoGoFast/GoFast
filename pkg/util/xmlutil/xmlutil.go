@@ -15,6 +15,7 @@ import (
 // Document 表示XML文档。
 // Document represents an XML document.
 type Document struct {
+	Root string
 	*xmlquery.Node
 }
 
@@ -35,7 +36,13 @@ func ReadXML(filePath string) (*Document, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Document{doc}, nil
+
+	root := doc.SelectElement("root")
+	if root == nil {
+		return nil, errors.New("root element not found")
+	}
+
+	return &Document{Root: root.Data, Node: doc}, nil
 }
 
 // ParseXML 从字符串解析XML文档。
@@ -45,7 +52,13 @@ func ParseXML(xmlStr string) (*Document, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Document{doc}, nil
+
+	root := doc.SelectElement("root")
+	if root == nil {
+		return nil, errors.New("root element not found")
+	}
+
+	return &Document{Root: root.Data, Node: doc}, nil
 }
 
 // ToStr 将XML文档转换为字符串。
@@ -72,7 +85,7 @@ func ToFile(doc *Document, filePath string) error {
 // CreateXML creates a new XML document.
 func CreateXML(rootElementName string) *Document {
 	root := &xmlquery.Node{Type: xmlquery.ElementNode, Data: rootElementName}
-	return &Document{root}
+	return &Document{Root: rootElementName, Node: root}
 }
 
 // CleanInvalid 去除XML文本中的无效字符。

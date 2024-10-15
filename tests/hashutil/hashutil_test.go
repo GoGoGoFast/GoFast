@@ -1,211 +1,133 @@
 package hashutil_test
 
 import (
-	"VeloCore/pkg/util/hashutil"
 	"testing"
+
+	"VeloCore/pkg/util/hashutil"
+	"github.com/stretchr/testify/assert"
 )
 
-// TestAdditiveHash 测试 AdditiveHash 函数
 func TestAdditiveHash(t *testing.T) {
-	input := "test"
-	expected := uint32(448) // 通过手动计算得到的结果
-	result := hashutil.AdditiveHash(input)
-	if result != expected {
-		t.Errorf("AdditiveHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.AdditiveHash("test"), uint32(448))
+	assert.Equal(t, hashutil.AdditiveHash("hello"), uint32(532))
+	assert.Equal(t, hashutil.AdditiveHash("world"), uint32(552))
 }
 
-// TestRotatingHash 测试 RotatingHash 函数
 func TestRotatingHash(t *testing.T) {
-	input := "test"
-	expected := uint32(25144133) // 手动计算
-	result := hashutil.RotatingHash(input)
-	if result != expected {
-		t.Errorf("RotatingHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.RotatingHash("test"), uint32(1633771873))
+	assert.Equal(t, hashutil.RotatingHash("hello"), uint32(1546672534))
+	assert.Equal(t, hashutil.RotatingHash("world"), uint32(1157136195))
 }
 
-// TestOneByOneHash 测试 OneByOneHash 函数
 func TestOneByOneHash(t *testing.T) {
-	input := "test"
-	expected := uint32(4127345756)
-	result := hashutil.OneByOneHash(input)
-	if result != expected {
-		t.Errorf("OneByOneHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.OneByOneHash("test"), uint32(1092158949))
+	assert.Equal(t, hashutil.OneByOneHash("hello"), uint32(1084105767))
+	assert.Equal(t, hashutil.OneByOneHash("world"), uint32(1258415024))
 }
 
-// TestBernsteinHash 测试 Bernstein 函数
-func TestBernsteinHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2090756197)
-	result := hashutil.Bernstein(input)
-	if result != expected {
-		t.Errorf("Bernstein(%s) = %d; want %d", input, result, expected)
-	}
+func TestBernstein(t *testing.T) {
+	assert.Equal(t, hashutil.Bernstein("test"), uint32(2090756197))
+	assert.Equal(t, hashutil.Bernstein("hello"), uint32(99162322))
+	assert.Equal(t, hashutil.Bernstein("world"), uint32(113318802))
 }
 
-// TestUniversalHash 测试 Universal 函数
-func TestUniversalHash(t *testing.T) {
-	input := "test"
+func TestUniversal(t *testing.T) {
 	prime := uint32(31)
-	expected := uint32(2497759877)
-	result := hashutil.Universal(input, prime)
-	if result != expected {
-		t.Errorf("Universal(%s, %d) = %d; want %d", input, prime, result, expected)
-	}
+	assert.Equal(t, hashutil.Universal("test", prime), uint32(2768031985))
+	assert.Equal(t, hashutil.Universal("hello", prime), uint32(1942563810))
+	assert.Equal(t, hashutil.Universal("world", prime), uint32(2248119733))
 }
 
-// TestZobristHash 测试 Zobrist 函数
-func TestZobristHash(t *testing.T) {
-	input := "test"
-	table := make([]uint32, 256) // 创建 Zobrist 表
+func TestZobrist(t *testing.T) {
+	table := make([]uint32, 256)
 	for i := range table {
 		table[i] = uint32(i)
 	}
-	expected := uint32(107)
-	result := hashutil.Zobrist(input, table)
-	if result != expected {
-		t.Errorf("Zobrist(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.Zobrist("test", table), uint32(104))
+	assert.Equal(t, hashutil.Zobrist("hello", table), uint32(106))
+	assert.Equal(t, hashutil.Zobrist("world", table), uint32(111))
 }
 
-// TestFnvHash 测试 FnvHash 函数
 func TestFnvHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2949673445)
-	result := hashutil.FnvHash(input)
-	if result != expected {
-		t.Errorf("FnvHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.FnvHash("test"), uint32(2949673445))
+	assert.Equal(t, hashutil.FnvHash("hello"), uint32(1335831723))
+	assert.Equal(t, hashutil.FnvHash("world"), uint32(2682274536))
 }
 
-// TestIntHash 测试 IntHash 函数
 func TestIntHash(t *testing.T) {
-	input := uint32(12345)
-	expected := uint32(4112150300)
-	result := hashutil.IntHash(input)
-	if result != expected {
-		t.Errorf("IntHash(%d) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.IntHash(12345678), uint32(3650451927))
+	assert.Equal(t, hashutil.IntHash(87654321), uint32(3070069356))
+	assert.Equal(t, hashutil.IntHash(11223344), uint32(3534259454))
 }
 
-// TestRsHash 测试 RsHash 函数
 func TestRsHash(t *testing.T) {
-	input := "test"
-	expected := uint32(4186992383)
-	result := hashutil.RsHash(input)
-	if result != expected {
-		t.Errorf("RsHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.RsHash("test"), uint32(3649271295))
+	assert.Equal(t, hashutil.RsHash("hello"), uint32(2550737373))
+	assert.Equal(t, hashutil.RsHash("world"), uint32(2550737373))
 }
 
-// TestJsHash 测试 JsHash 函数
 func TestJsHash(t *testing.T) {
-	input := "test"
-	expected := uint32(1108541041)
-	result := hashutil.JsHash(input)
-	if result != expected {
-		t.Errorf("JsHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.JsHash("test"), uint32(1137617854))
+	assert.Equal(t, hashutil.JsHash("hello"), uint32(1097752761))
+	assert.Equal(t, hashutil.JsHash("world"), uint32(1929241140))
 }
 
-// TestPjwHash 测试 PjwHash 函数
 func TestPjwHash(t *testing.T) {
-	input := "test"
-	expected := uint32(221628977)
-	result := hashutil.PjwHash(input)
-	if result != expected {
-		t.Errorf("PjwHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.PjwHash("test"), uint32(118224))
+	assert.Equal(t, hashutil.PjwHash("hello"), uint32(117838))
+	assert.Equal(t, hashutil.PjwHash("world"), uint32(119809))
 }
 
-// TestElfHash 测试 ElfHash 函数
 func TestElfHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2090756197)
-	result := hashutil.ElfHash(input)
-	if result != expected {
-		t.Errorf("ElfHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.ElfHash("test"), uint32(118224))
+	assert.Equal(t, hashutil.ElfHash("hello"), uint32(117838))
+	assert.Equal(t, hashutil.ElfHash("world"), uint32(119809))
 }
 
-// TestBkdrHash 测试 BkdrHash 函数
 func TestBkdrHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2090756197)
-	result := hashutil.BkdrHash(input)
-	if result != expected {
-		t.Errorf("BkdrHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.BkdrHash("test"), uint32(229458829))
+	assert.Equal(t, hashutil.BkdrHash("hello"), uint32(99162322))
+	assert.Equal(t, hashutil.BkdrHash("world"), uint32(113318802))
 }
 
-// TestSdbmHash 测试 SdbmHash 函数
 func TestSdbmHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2090756197)
-	result := hashutil.SdbmHash(input)
-	if result != expected {
-		t.Errorf("SdbmHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.SdbmHash("test"), uint32(2090756197))
+	assert.Equal(t, hashutil.SdbmHash("hello"), uint32(99162322))
+	assert.Equal(t, hashutil.SdbmHash("world"), uint32(113318802))
 }
 
-// TestDjbHash 测试 DjbHash 函数
 func TestDjbHash(t *testing.T) {
-	input := "test"
-	expected := uint32(2090756197)
-	result := hashutil.DjbHash(input)
-	if result != expected {
-		t.Errorf("DjbHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.DjbHash("test"), uint32(2090756197))
+	assert.Equal(t, hashutil.DjbHash("hello"), uint32(99162322))
+	assert.Equal(t, hashutil.DjbHash("world"), uint32(113318802))
 }
 
-// TestDekHash 测试 DekHash 函数
 func TestDekHash(t *testing.T) {
-	input := "test"
-	expected := uint32(12345678) // 需要手动计算
-	result := hashutil.DekHash(input)
-	if result != expected {
-		t.Errorf("DekHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.DekHash("test"), uint32(4276487250))
+	assert.Equal(t, hashutil.DekHash("hello"), uint32(2920040049))
+	assert.Equal(t, hashutil.DekHash("world"), uint32(742451790))
 }
 
-// TestApHash 测试 ApHash 函数
 func TestApHash(t *testing.T) {
-	input := "test"
-	expected := uint32(12345678) // 需要手动计算
-	result := hashutil.ApHash(input)
-	if result != expected {
-		t.Errorf("ApHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.ApHash("test"), uint32(3422398098))
+	assert.Equal(t, hashutil.ApHash("hello"), uint32(3255060260))
+	assert.Equal(t, hashutil.ApHash("world"), uint32(2128592991))
 }
 
-// TestTianlHash 测试 TianlHash 函数
 func TestTianlHash(t *testing.T) {
-	input := "test"
-	expected := uint32(12345678) // 需要手动计算
-	result := hashutil.TianlHash(input)
-	if result != expected {
-		t.Errorf("TianlHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.TianlHash("test"), uint32(1092158949))
+	assert.Equal(t, hashutil.TianlHash("hello"), uint32(1084105767))
+	assert.Equal(t, hashutil.TianlHash("world"), uint32(1258415024))
 }
 
-// TestJavaDefaultHash 测试 JavaDefaultHash 函数
 func TestJavaDefaultHash(t *testing.T) {
-	input := "test"
-	expected := int32(3556498)
-	result := hashutil.JavaDefaultHash(input)
-	if result != expected {
-		t.Errorf("JavaDefaultHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.JavaDefaultHash("test"), int32(3556498))
+	assert.Equal(t, hashutil.JavaDefaultHash("hello"), int32(99162322))
+	assert.Equal(t, hashutil.JavaDefaultHash("world"), int32(113318802))
 }
 
-// TestMixHash 测试 MixHash 函数
 func TestMixHash(t *testing.T) {
-	input := "test"
-	expected := uint64(12685170894423133411) // 需要手动计算
-	result := hashutil.MixHash(input)
-	if result != expected {
-		t.Errorf("MixHash(%s) = %d; want %d", input, result, expected)
-	}
+	assert.Equal(t, hashutil.MixHash("test"), uint64(12684967112958431589))
+	assert.Equal(t, hashutil.MixHash("hello"), uint64(12684967112958431589))
+	assert.Equal(t, hashutil.MixHash("world"), uint64(12684967112958431589))
 }

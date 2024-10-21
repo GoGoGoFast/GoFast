@@ -2,7 +2,6 @@ package numberutil
 
 import (
 	"math"
-	"math/big"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -11,51 +10,39 @@ import (
 
 // Add 进行加法运算
 func Add(a, b float64) float64 {
-	bfA := big.NewFloat(a)
-	bfB := big.NewFloat(b)
-	result := new(big.Float).Add(bfA, bfB)
-	f64, _ := result.Float64()
-	return f64
+	return a + b
 }
 
 // Sub 进行减法运算
 func Sub(a, b float64) float64 {
-	bfA := big.NewFloat(a)
-	bfB := big.NewFloat(b)
-	result := new(big.Float).Sub(bfA, bfB)
-	f64, _ := result.Float64()
-	return f64
+	return a - b
 }
 
 // Mul 进行乘法运算
 func Mul(a, b float64) float64 {
-	bfA := big.NewFloat(a)
-	bfB := big.NewFloat(b)
-	result := new(big.Float).Mul(bfA, bfB)
-	f64, _ := result.Float64()
-	return f64
+	return a * b
 }
 
-// Div 进行除法运算，支持指定小数位数和舍弃方式
+// Div 进行除法运算，支持指定小数位数和舍入方式
 func Div(a, b float64, precision int, roundMode string) float64 {
 	if b == 0 {
 		return math.NaN() // 避免除以零
 	}
-	bfA := big.NewFloat(a)
-	bfB := big.NewFloat(b)
-	result := bfA.Quo(bfA, bfB)
-	f64, _ := result.Float64()
-	if precision > 0 {
-		switch roundMode {
-		case "up":
-			return RoundUp(f64, precision)
-		case "down":
-			return RoundDown(f64, precision)
-		default:
-			return Round(f64, precision)
-		}
+	result := a / b
+	return roundResult(result, precision, roundMode)
+}
+
+// roundResult 根据舍入方式对结果进行处理
+func roundResult(value float64, precision int, roundMode string) float64 {
+	factor := math.Pow(10, float64(precision))
+	switch roundMode {
+	case "up":
+		return math.Ceil(value*factor) / factor
+	case "down":
+		return math.Floor(value*factor) / factor
+	default:
+		return math.Round(value*factor) / factor
 	}
-	return f64
 }
 
 // Round 四舍五入
@@ -73,23 +60,29 @@ func RoundStr(value float64, precision int) string {
 func DecimalFormat(format string, value int64) string {
 	strValue := strconv.FormatInt(value, 10)
 	var builder strings.Builder
-	formatIndex, valueIndex := 0, 0
+	formatIndex, valueIndex := len(format)-1, len(strValue)-1
 
-	for formatIndex < len(format) {
+	for formatIndex >= 0 {
 		ch := format[formatIndex]
 		if ch == '#' || ch == '0' {
-			if valueIndex < len(strValue) {
+			if valueIndex >= 0 {
 				builder.WriteByte(strValue[valueIndex])
-				valueIndex++
+				valueIndex--
 			} else if ch == '0' {
 				builder.WriteByte('0')
 			}
 		} else {
 			builder.WriteByte(byte(ch))
 		}
-		formatIndex++
+		formatIndex--
 	}
-	return builder.String()
+
+	// Reverse the string
+	runes := []rune(builder.String())
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }
 
 // IsNumber 检查是否为数字
@@ -196,18 +189,24 @@ func ToStr(value float64) string {
 	return strings.TrimRight(strings.TrimRight(strconv.FormatFloat(value, 'f', -1, 64), "0"), ".")
 }
 
-// 内部方法用于四舍五入、向上、向下取整
-func round(value float64, precision int) float64 {
-	factor := math.Pow(10, float64(precision))
-	return math.Round(value*factor) / factor
+// IsEven 检查是否为偶数
+func IsEven(n int) bool {
+	return n%2 == 0
 }
 
-func RoundUp(value float64, precision int) float64 {
-	factor := math.Pow(10, float64(precision))
-	return math.Ceil(value*factor) / factor
+// IsOdd 检查是否为奇数
+func IsOdd(n int) bool {
+	return n%2 != 0
 }
 
-func RoundDown(value float64, precision int) float64 {
-	factor := math.Pow(10, float64(precision))
-	return math.Floor(value*factor) / factor
+// Fibonacci 计算斐波那契数列的第n个数
+func Fibonacci(n int) int {
+	if n <= 1 {
+		return n
+	}
+	a, b := 0, 1
+	for i := 2; i <= n; i++ {
+		a, b = b, a+b
+	}
+	return b
 }

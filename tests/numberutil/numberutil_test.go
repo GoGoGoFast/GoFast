@@ -3,143 +3,117 @@ package numberutil_test
 import (
 	"VeloCore/pkg/util/numberutil"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestAdd(t *testing.T) {
-	result := numberutil.Add(1.5, 2.3)
-	expected := 3.8
-	if result != expected {
-		t.Errorf("Add(1.5, 2.3) = %f; want %f", result, expected)
-	}
+	assert.Equal(t, 3.0, numberutil.Add(1, 2))
 }
 
 func TestSub(t *testing.T) {
-	result := numberutil.Sub(5.5, 2.2)
-	expected := 3.3
-	if result != expected {
-		t.Errorf("Sub(5.5, 2.2) = %f; want %f", result, expected)
-	}
+	assert.Equal(t, -1.0, numberutil.Sub(1, 2))
 }
 
 func TestMul(t *testing.T) {
-	result := numberutil.Mul(3.0, 2.5)
-	expected := 7.5
-	if result != expected {
-		t.Errorf("Mul(3.0, 2.5) = %f; want %f", result, expected)
-	}
+	assert.Equal(t, 2.0, numberutil.Mul(1, 2))
 }
 
 func TestDiv(t *testing.T) {
-	result := numberutil.Div(10.0, 4.0, 2, "")
-	expected := 2.5
-	if result != expected {
-		t.Errorf("Div(10.0, 4.0, 2, '') = %f; want %f", result, expected)
-	}
+	assert.Equal(t, 0.5, numberutil.Div(1, 2, 2, ""))
+	assert.Equal(t, 0.52, numberutil.Div(1, 1.95, 2, "up"))
+	assert.Equal(t, 0.51, numberutil.Div(1, 1.95, 2, ""))
+	assert.Equal(t, 0.51, numberutil.Div(1, 1.95, 2, "down"))
 }
 
 func TestRound(t *testing.T) {
-	result := numberutil.Round(3.14159, 2)
-	expected := 3.14
-	if result != expected {
-		t.Errorf("Round(3.14159, 2) = %f; want %f", result, expected)
-	}
+	assert.Equal(t, 1.23, numberutil.Round(1.234, 2))
+}
+
+func TestRoundStr(t *testing.T) {
+	assert.Equal(t, "1.23", numberutil.RoundStr(1.234, 2))
 }
 
 func TestDecimalFormat(t *testing.T) {
-	result := numberutil.DecimalFormat("###,###", 123456)
-	expected := "123,456"
-	if result != expected {
-		t.Errorf("DecimalFormat('###,###', 123456) = %s; want %s", result, expected)
-	}
+	assert.Equal(t, "00123", numberutil.DecimalFormat("00000", 123))
 }
 
 func TestIsNumber(t *testing.T) {
-	result := numberutil.IsNumber("123.45")
-	if !result {
-		t.Errorf("IsNumber('123.45') = false; want true")
-	}
+	assert.True(t, numberutil.IsNumber("123.45"))
+	assert.False(t, numberutil.IsNumber("abc"))
 }
 
 func TestIsInteger(t *testing.T) {
-	result := numberutil.IsInteger("123")
-	if !result {
-		t.Errorf("IsInteger('123') = false; want true")
-	}
+	assert.True(t, numberutil.IsInteger("123"))
+	assert.False(t, numberutil.IsInteger("123.45"))
+}
+
+func TestIsDouble(t *testing.T) {
+	assert.True(t, numberutil.IsDouble("123.45"))
+	assert.False(t, numberutil.IsDouble("abc"))
 }
 
 func TestIsPrime(t *testing.T) {
-	result := numberutil.IsPrime(7)
-	if !result {
-		t.Errorf("IsPrime(7) = false; want true")
-	}
+	assert.True(t, numberutil.IsPrime(7))
+	assert.False(t, numberutil.IsPrime(4))
 }
 
 func TestGenerateRandomNumber(t *testing.T) {
-	numbers := numberutil.GenerateRandomNumber(1, 100, 10)
-	if len(numbers) != 10 {
-		t.Errorf("GenerateRandomNumber(1, 100, 10) generated %d numbers; want 10", len(numbers))
-	}
+	numbers := numberutil.GenerateRandomNumber(1, 10, 5)
+	assert.Equal(t, 5, len(numbers))
 }
 
 func TestFactorial(t *testing.T) {
-	result := numberutil.Factorial(5)
-	expected := 120
-	if result != expected {
-		t.Errorf("Factorial(5) = %d; want %d", result, expected)
-	}
+	assert.Equal(t, 120, numberutil.Factorial(5))
 }
 
 func TestSqrt(t *testing.T) {
-	result := numberutil.Sqrt(16.0)
-	expected := 4.0
-	if result != expected {
-		t.Errorf("Sqrt(16.0) = %f; want %f", result, expected)
-	}
+	assert.Equal(t, 2.0, numberutil.Sqrt(4))
 }
 
 func TestDivisor(t *testing.T) {
-	result := numberutil.Divisor(36, 60)
-	expected := 12
-	if result != expected {
-		t.Errorf("Divisor(36, 60) = %d; want %d", result, expected)
-	}
+	assert.Equal(t, 2, numberutil.Divisor(4, 2))
 }
 
 func TestMultiple(t *testing.T) {
-	result := numberutil.Multiple(12, 15)
-	expected := 60
-	if result != expected {
-		t.Errorf("Multiple(12, 15) = %d; want %d", result, expected)
-	}
+	assert.Equal(t, 6, numberutil.Multiple(2, 3))
 }
 
 func TestGetBinaryStr(t *testing.T) {
-	result := numberutil.GetBinaryStr(10)
-	expected := "1010"
-	if result != expected {
-		t.Errorf("GetBinaryStr(10) = %s; want %s", result, expected)
-	}
+	assert.Equal(t, "1010", numberutil.GetBinaryStr(10))
 }
 
 func TestBinaryToInt(t *testing.T) {
-	result, _ := numberutil.BinaryToInt("1010")
-	expected := 10
-	if result != expected {
-		t.Errorf("BinaryToInt('1010') = %d; want %d", result, expected)
-	}
+	result, err := numberutil.BinaryToInt("1010")
+	assert.NoError(t, err)
+	assert.Equal(t, 10, result)
 }
 
 func TestCompare(t *testing.T) {
-	result := numberutil.Compare(3.0, 3.0)
-	if result != 0 {
-		t.Errorf("Compare(3.0, 3.0) = %d; want 0", result)
-	}
+	assert.Equal(t, -1, numberutil.Compare(1, 2))
+	assert.Equal(t, 0, numberutil.Compare(2, 2))
+	assert.Equal(t, 1, numberutil.Compare(3, 2))
 }
 
 func TestToStr(t *testing.T) {
-	result := numberutil.ToStr(123.45000)
-	expected := "123.45"
-	if result != expected {
-		t.Errorf("ToStr(123.45000) = %s; want %s", result, expected)
-	}
+	assert.Equal(t, "123.45", numberutil.ToStr(123.450000))
+}
+
+func TestIsEven(t *testing.T) {
+	assert.True(t, numberutil.IsEven(2))
+	assert.False(t, numberutil.IsEven(3))
+}
+
+func TestIsOdd(t *testing.T) {
+	assert.True(t, numberutil.IsOdd(3))
+	assert.False(t, numberutil.IsOdd(2))
+}
+
+func TestFibonacci(t *testing.T) {
+	assert.Equal(t, 0, numberutil.Fibonacci(0))
+	assert.Equal(t, 1, numberutil.Fibonacci(1))
+	assert.Equal(t, 1, numberutil.Fibonacci(2))
+	assert.Equal(t, 2, numberutil.Fibonacci(3))
+	assert.Equal(t, 3, numberutil.Fibonacci(4))
+	assert.Equal(t, 5, numberutil.Fibonacci(5))
 }

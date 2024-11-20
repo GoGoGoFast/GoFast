@@ -1,58 +1,64 @@
+当然可以！以下是你提供的项目介绍的英文版本：
+
 # GoFast
 
-GoFast 是一个全面的Go语言基础功能库，旨在为开发者提供一站式的解决方案，节约开发时间，提升开发效率。无论是基础功能还是高级工具，GoFast 都能满足你的需求。
+GoFast is a comprehensive Go language utility library designed to provide developers with a one-stop solution, saving development time and improving efficiency. Whether it's basic functionality or advanced tools, GoFast has you covered.
 
-## 项目介绍
+## Project Introduction
 
-GoFast 是一个全能库，包含了大部分开发所需的功能模块。我们的目标是让开发者能够更专注于业务逻辑，而不是花费大量时间在重复性的基础功能实现上。
+GoFast is an all-in-one library that includes most of the essential modules needed for development. Our goal is to allow developers to focus more on business logic rather than spending a lot of time on repetitive basic functionality implementations.
 
-### 特性
+### Features
 
-- **全面性**：覆盖广泛的功能模块，包括字符串处理、文件操作、网络请求、并发工具等。
-- **高效性**：优化的实现和高效的算法，确保性能不受影响。
-- **易用性**：简洁易懂的API设计，方便快速上手使用。
-- **可扩展性**：模块化设计，方便扩展和定制。
+- **Comprehensive**: Covers a wide range of functional modules, including string processing, file operations, network requests, concurrency tools, and more.
+- **Efficient**: Optimized implementations and efficient algorithms ensure performance is not compromised.
+- **Easy to Use**: Simple and understandable API design, making it easy to get started quickly.
+- **Extensible**: Modular design allows for easy extension and customization.
 
-### 模块列表
+### Module List
 
-目前，GoFast 包含以下模块：
+Currently, GoFast includes the following modules:
 
-- **cache**: 缓存处理
-- **cli**: 命令行工具
-- **config**: 配置管理
-- **crypto**: 加密解密
-- **datetime**: 时间日期处理
-- **errorhandler**: 错误处理
-- **io**: 输入输出操作
-- **log**: 日志管理
-- **net**: 网络请求和操作
-- **sync**: 并发工具
+- **cache**: Cache processing
+- **cli**: Command line tools
+- **config**: Configuration management
+- **crypto**: Encryption and decryption
+- **datetime**: Date and time processing
+- **errorhandler**: Error handling
+- **io**: Input and output operations
+- **log**: Logging management
+- **net**: Network requests and operations
+- **sync**: Concurrency tools
 - **util**
-    - **arrayutil**: 数组工具
-    - **charsetutil**: 字符集工具
-    - **creditcodeutil**: 信用代码工具
-    - **desensitizedutil**: 数据脱敏工具
-    - **enumutil**: 枚举工具
-    - **escapeutil**: 转义字符工具
-    - **hashutil**: 哈希工具
-    - **hexutil**: 十六进制工具
-    - **idcardutil**: 身份证工具
-    - **idutil**: ID生成工具
-    - **jsonutil**: JSON处理工具
-    - **numberutil**: 数字处理工具
-    - **objectutil**: 对象处理工具
-    - **randomutil**: 随机数生成工具
-    - **reutil**: 正则表达式工具
-    - **strutil**: 字符串处理工具
-    - **urlutil**: URL处理工具
-    - **xmlutil**: XML处理工具
-    - **ziputil**: ZIP压缩解压工具
+  - **arrayutil**: Array utilities
+  - **charsetutil**: Charset utilities
+  - **creditcodeutil**: Credit code utilities
+  - **desensitizedutil**: Data desensitization utilities
+  - **enumutil**: Enum utilities
+  - **escapeutil**: Escape character utilities
+  - **hashutil**: Hash utilities
+  - **hexutil**: Hexadecimal utilities
+  - **idcardutil**: ID card utilities
+  - **idutil**: ID generation utilities
+  - **jsonutil**: JSON processing utilities
+  - **numberutil**: Number processing utilities
+  - **objectutil**: Object processing utilities
+  - **randomutil**: Random number generation utilities
+  - **reutil**: Regular expression utilities
+  - **strutil**: String processing utilities
+  - **urlutil**: URL processing utilities
+  - **xmlutil**: XML processing utilities
+  - **ziputil**: ZIP compression and decompression utilities
 
-更多模块正在开发中...
+More modules are under development...
 
-### 安装
+### Installation
 
-使用 `go get` 命令安装 GoFast：
+Use the `go get` command to install GoFast:
 
 ```sh
-go get -u github.com/jh2310/GoFast
+go get -u github.com/GoGoGoFast/GoFast
+
+```
+
+If you need further assistance or have any questions, feel free to ask!

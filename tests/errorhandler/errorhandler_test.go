@@ -1,7 +1,7 @@
 package errorhandler_test
 
 import (
-	"GoAllInOne/pkg/errorhandler"
+	"GoFast/pkg/errorhandler"
 	"errors"
 	"os"
 	"strings"

@@ -1,7 +1,7 @@
 package arrayutil_test
 
 import (
-	"GoAllInOne/pkg/util/arrayutil"
+	"GoFast/pkg/util/arrayutil"
 	"reflect"
 	"testing"
 )

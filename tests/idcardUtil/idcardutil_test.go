@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"GoAllInOne/pkg/util/idcardutil"
+	"GoFast/pkg/util/idcardutil"
 )
 
 func TestIsValidCard(t *testing.T) {

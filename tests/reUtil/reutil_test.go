@@ -1,7 +1,7 @@
 package reutil_test
 
 import (
-	"GoAllInOne/pkg/util/reutil"
+	"GoFast/pkg/util/reutil"
 	"testing"
 )
 

@@ -3,7 +3,7 @@ package hashutil_test
 import (
 	"testing"
 
-	"GoAllInOne/pkg/util/hashutil"
+	"GoFast/pkg/util/hashutil"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -1,7 +1,7 @@
 package randomutil_test
 
 import (
-	"GoAllInOne/pkg/util/randomutil"
+	"GoFast/pkg/util/randomutil"
 	"testing"
 	"unicode"
 )

@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"GoAllInOne/pkg/util/urlutil"
+	"GoFast/pkg/util/urlutil"
 	"github.com/stretchr/testify/assert"
 )
 

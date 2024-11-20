@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"GoAllInOne/pkg/util/enumutil"
+	"GoFast/pkg/util/enumutil"
 )
 
 // 定义一个测试用的枚举类型

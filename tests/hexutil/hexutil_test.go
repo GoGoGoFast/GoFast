@@ -1,7 +1,7 @@
 package hexutil_test
 
 import (
-	"GoAllInOne/pkg/util/hexutil"
+	"GoFast/pkg/util/hexutil"
 	"testing"
 )
 

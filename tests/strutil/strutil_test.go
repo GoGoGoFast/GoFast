@@ -3,7 +3,7 @@ package strutil_test
 import (
 	"testing"
 
-	"GoAllInOne/pkg/util/strutil"
+	"GoFast/pkg/util/strutil"
 )
 
 func TestConcat(t *testing.T) {

@@ -1,7 +1,7 @@
 package numberutil_test
 
 import (
-	"GoAllInOne/pkg/util/numberutil"
+	"GoFast/pkg/util/numberutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

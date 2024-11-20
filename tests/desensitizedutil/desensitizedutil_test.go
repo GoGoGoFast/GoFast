@@ -1,7 +1,7 @@
 package desensitizedutil_test
 
 import (
-	"GoAllInOne/pkg/util/desensitizedutil"
+	"GoFast/pkg/util/desensitizedutil"
 	"testing"
 )
 

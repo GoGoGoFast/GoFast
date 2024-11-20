@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"GoAllInOne/pkg/util/xmlutil"
+	"GoFast/pkg/util/xmlutil"
 	"github.com/stretchr/testify/assert"
 )
 

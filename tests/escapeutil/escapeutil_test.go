@@ -3,7 +3,7 @@ package escapeutil_test
 import (
 	"testing"
 
-	"GoAllInOne/pkg/util/escapeutil"
+	"GoFast/pkg/util/escapeutil"
 )
 
 // 测试Escape函数

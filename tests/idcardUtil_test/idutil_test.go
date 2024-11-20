@@ -1,7 +1,7 @@
 package idcardUtil_test_test
 
 import (
-	"GoAllInOne/pkg/util/idutil"
+	"GoFast/pkg/util/idutil"
 	"testing"
 )
 

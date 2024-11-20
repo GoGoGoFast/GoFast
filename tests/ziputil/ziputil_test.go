@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"GoAllInOne/pkg/util/ziputil"
+	"GoFast/pkg/util/ziputil"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -1,7 +1,7 @@
 package charsetutil_test
 
 import (
-	"GoAllInOne/pkg/util/charsetutil"
+	"GoFast/pkg/util/charsetutil"
 	"golang.org/x/text/encoding/unicode"
 	"testing"
 )

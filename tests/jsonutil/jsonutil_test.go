@@ -1,7 +1,7 @@
 package jsonutil
 
 import (
-	"GoAllInOne/pkg/util/jsonutil"
+	"GoFast/pkg/util/jsonutil"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

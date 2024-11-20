@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"GoAllInOne/pkg/util/objectutil"
+	"GoFast/pkg/util/objectutil"
 )
 
 // 定义测试结构体

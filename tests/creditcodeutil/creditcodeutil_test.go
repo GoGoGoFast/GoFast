@@ -1,7 +1,7 @@
 package creditcodeutil_test
 
 import (
-	"GoAllInOne/pkg/util/creditcodeutil"
+	"GoFast/pkg/util/creditcodeutil"
 	"testing"
 )
 

@@ -1,4 +1,4 @@
-module GoAllInOne
+module GoFast
 
 go 1.22
 

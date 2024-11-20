@@ -1,4 +1,4 @@
-module VeloCore
+module GoAllInOne
 
 go 1.22
 

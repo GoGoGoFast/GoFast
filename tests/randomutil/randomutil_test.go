@@ -1,7 +1,7 @@
 package randomutil_test
 
 import (
-	"VeloCore/pkg/util/randomutil"
+	"GoAllInOne/pkg/util/randomutil"
 	"testing"
 	"unicode"
 )

@@ -1,9 +1,6 @@
 // Package fileutil provides utility functions for handling file names and paths
 // across different operating systems. This package ensures that file names are
 // valid and cleans invalid characters based on the operating system's rules.
-//
-// Package fileutil 提供了处理文件名和路径的实用函数，
-// 适用于不同的操作系统。该包确保文件名有效，并根据操作系统的规则清理无效字符。
 package fileutil
 
 import (
@@ -15,13 +12,11 @@ import (
 
 // Touch creates an empty file if it doesn't exist or updates the modified time if it does.
 //
-// Touch 如果文件不存在则创建一个空文件，如果文件存在则更新修改时间。
-//
 // Parameters:
-// - path: the path of the file to touch (要创建或更新的文件路径)
+// - path: the path of the file to touch
 //
 // Returns:
-// - error: if an error occurs (如果发生错误)
+// - error: if an error occurs
 func Touch(path string) error {
 	f, err := os.OpenFile(path, os.O_RDONLY|os.O_CREATE, 0644)
 	if err != nil {
@@ -37,13 +32,11 @@ func Touch(path string) error {
 
 // Rm removes a file or directory. If it's a directory, it removes all contents recursively.
 //
-// Rm 删除一个文件或目录。如果是目录，它会递归删除所有内容。
-//
 // Parameters:
-// - path: the path of the file or directory to remove (要删除的文件或目录的路径)
+// - path: the path of the file or directory to remove
 //
 // Returns:
-// - error: if an error occurs (如果发生错误)
+// - error: if an error occurs
 func Rm(path string) error {
 	err := os.RemoveAll(path)
 	if err != nil {
@@ -54,14 +47,12 @@ func Rm(path string) error {
 
 // Cp copies a file or directory. If the source is a directory, it copies recursively.
 //
-// Cp 复制一个文件或目录。如果源是目录，它会递归复制。
-//
 // Parameters:
-// - src: the source file or directory (源文件或目录)
-// - dst: the destination file or directory (目标文件或目录)
+// - src: the source file or directory
+// - dst: the destination file or directory
 //
 // Returns:
-// - error: if an error occurs (如果发生错误)
+// - error: if an error occurs
 func Cp(src, dst string) error {
 	srcInfo, err := os.Stat(src)
 	if err != nil {
@@ -129,14 +120,14 @@ func copyDir(src, dst string) error {
 	return nil
 }
 
-// Mv 重命名或移动一个文件/目录从 src 到 dst。
+// Mv renames or moves a file/directory from src to dst.
 //
 // Parameters:
-// - src: the source file or directory (源文件或目录)
-// - dst: the destination file or directory (目标文件或目录)
+// - src: the source file or directory
+// - dst: the destination file or directory
 //
 // Returns:
-// - error: if an error occurs (如果发生错误)
+// - error: if an error occurs
 func Mv(src, dst string) error {
 	if err := os.Rename(src, dst); err != nil {
 		return fmt.Errorf("failed to move file or directory from %s to %s: %w", src, dst, err)
@@ -146,13 +137,11 @@ func Mv(src, dst string) error {
 
 // Mkdir creates a directory and all necessary parent directories.
 //
-// Mkdir 创建一个目录和所有必要的父目录。
-//
 // Parameters:
-// - path: the path of the directory to create (要创建的目录路径)
+// - path: the path of the directory to create
 //
 // Returns:
-// - error: if an error occurs (如果发生错误)
+// - error: if an error occurs
 func Mkdir(path string) error {
 	if err := os.MkdirAll(path, os.ModePerm); err != nil {
 		return fmt.Errorf("failed to create directory at %s: %w", path, err)
@@ -162,14 +151,12 @@ func Mkdir(path string) error {
 
 // IsEmpty checks if a file or directory is empty.
 //
-// IsEmpty 检查文件或目录是否为空。
-//
 // Parameters:
-// - path: the path of the file or directory (要检查的文件或目录路径)
+// - path: the path of the file or directory
 //
 // Returns:
-// - bool: true if the file or directory is empty, false otherwise (如果文件或目录为空则返回 true，否则返回 false)
-// - error: if an error occurs (如果发生错误)
+// - bool: true if the file or directory is empty, false otherwise
+// - error: if an error occurs
 func IsEmpty(path string) (bool, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -202,13 +189,11 @@ func IsEmpty(path string) (bool, error) {
 
 // IsFile checks if the given path is a file.
 //
-// IsFile 检查给定路径是否是文件。
-//
 // Parameters:
-// - path: the path to check (要检查的路径)
+// - path: the path to check
 //
 // Returns:
-// - bool: true if the path is a file, false otherwise (如果路径是文件则返回 true，否则返回 false)
+// - bool: true if the path is a file, false otherwise
 func IsFile(path string) bool {
 	info, err := os.Stat(path)
 	if err != nil {
@@ -219,13 +204,11 @@ func IsFile(path string) bool {
 
 // IsDir checks if the given path is a directory.
 //
-// IsDir 检查给定路径是否是目录。
-//
 // Parameters:
-// - path: the path to check (要检查的路径)
+// - path: the path to check
 //
 // Returns:
-// - bool: true if the path is a directory, false otherwise (如果路径是目录则返回 true，否则返回 false)
+// - bool: true if the path is a directory, false otherwise
 func IsDir(path string) bool {
 	info, err := os.Stat(path)
 	if err != nil {

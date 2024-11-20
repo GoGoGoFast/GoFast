@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"VeloCore/pkg/util/enumutil"
+	"GoAllInOne/pkg/util/enumutil"
 )
 
 // 定义一个测试用的枚举类型

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"VeloCore/pkg/util/idcardutil"
+	"GoAllInOne/pkg/util/idcardutil"
 )
 
 func TestIsValidCard(t *testing.T) {

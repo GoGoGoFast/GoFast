@@ -1,7 +1,7 @@
 package jsonutil
 
 import (
-	"VeloCore/pkg/util/jsonutil"
+	"GoAllInOne/pkg/util/jsonutil"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package idcardUtil_test_test
 
 import (
-	"VeloCore/pkg/util/idutil"
+	"GoAllInOne/pkg/util/idutil"
 	"testing"
 )
 

@@ -3,7 +3,7 @@ package strutil_test
 import (
 	"testing"
 
-	"VeloCore/pkg/util/strutil"
+	"GoAllInOne/pkg/util/strutil"
 )
 
 func TestConcat(t *testing.T) {

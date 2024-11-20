@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"VeloCore/pkg/util/urlutil"
+	"GoAllInOne/pkg/util/urlutil"
 	"github.com/stretchr/testify/assert"
 )
 

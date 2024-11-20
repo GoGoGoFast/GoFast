@@ -1,7 +1,7 @@
 package numberutil_test
 
 import (
-	"VeloCore/pkg/util/numberutil"
+	"GoAllInOne/pkg/util/numberutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

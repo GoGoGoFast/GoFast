@@ -1,7 +1,7 @@
 package arrayutil_test
 
 import (
-	"VeloCore/pkg/util/arrayutil"
+	"GoAllInOne/pkg/util/arrayutil"
 	"reflect"
 	"testing"
 )

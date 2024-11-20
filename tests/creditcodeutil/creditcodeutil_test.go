@@ -1,7 +1,7 @@
 package creditcodeutil_test
 
 import (
-	"VeloCore/pkg/util/creditcodeutil"
+	"GoAllInOne/pkg/util/creditcodeutil"
 	"testing"
 )
 

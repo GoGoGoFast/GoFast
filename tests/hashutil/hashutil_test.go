@@ -3,7 +3,7 @@ package hashutil_test
 import (
 	"testing"
 
-	"VeloCore/pkg/util/hashutil"
+	"GoAllInOne/pkg/util/hashutil"
 	"github.com/stretchr/testify/assert"
 )
 

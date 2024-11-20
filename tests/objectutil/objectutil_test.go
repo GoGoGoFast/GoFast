@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"VeloCore/pkg/util/objectutil"
+	"GoAllInOne/pkg/util/objectutil"
 )
 
 // 定义测试结构体

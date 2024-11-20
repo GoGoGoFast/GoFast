@@ -1,7 +1,7 @@
 package hexutil_test
 
 import (
-	"VeloCore/pkg/util/hexutil"
+	"GoAllInOne/pkg/util/hexutil"
 	"testing"
 )
 

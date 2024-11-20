@@ -3,7 +3,7 @@ package escapeutil_test
 import (
 	"testing"
 
-	"VeloCore/pkg/util/escapeutil"
+	"GoAllInOne/pkg/util/escapeutil"
 )
 
 // 测试Escape函数

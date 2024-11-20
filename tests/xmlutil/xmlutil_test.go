@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"VeloCore/pkg/util/xmlutil"
+	"GoAllInOne/pkg/util/xmlutil"
 	"github.com/stretchr/testify/assert"
 )
 

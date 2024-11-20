@@ -1,7 +1,7 @@
 package reutil_test
 
 import (
-	"VeloCore/pkg/util/reutil"
+	"GoAllInOne/pkg/util/reutil"
 	"testing"
 )
 

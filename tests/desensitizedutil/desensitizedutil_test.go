@@ -1,7 +1,7 @@
 package desensitizedutil_test
 
 import (
-	"VeloCore/pkg/util/desensitizedutil"
+	"GoAllInOne/pkg/util/desensitizedutil"
 	"testing"
 )
 

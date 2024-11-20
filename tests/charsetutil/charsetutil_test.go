@@ -1,7 +1,7 @@
 package charsetutil_test
 
 import (
-	"VeloCore/pkg/util/charsetutil"
+	"GoAllInOne/pkg/util/charsetutil"
 	"golang.org/x/text/encoding/unicode"
 	"testing"
 )

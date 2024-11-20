@@ -1,9 +1,6 @@
 // Package fileutil provides utility functions for handling file names and paths
 // across different operating systems. This package ensures that file names are
 // valid and cleans invalid characters based on the operating system's rules.
-//
-// Package fileutil 提供了处理文件名和路径的实用函数，
-// 适用于不同的操作系统。该包确保文件名有效，并根据操作系统的规则清理无效字符。
 package fileutil
 
 import (
@@ -16,14 +13,11 @@ import (
 // GetBaseName returns the base name of the file without the extension.
 // For example, given the file path "example/test/file.txt", it will return "file".
 //
-// GetBaseName 返回没有扩展名的文件基本名。
-// 例如，给定文件路径 "example/test/file.txt"，它将返回 "file"。
-//
 // Parameters:
-// - filePath: the path of the file (文件路径)
+// - filePath: the path of the file
 //
 // Returns:
-// - string: the base name of the file (文件基本名)
+// - string: the base name of the file
 func GetBaseName(filePath string) string {
 	return strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath))
 }
@@ -31,14 +25,11 @@ func GetBaseName(filePath string) string {
 // GetExtension returns the file extension.
 // For example, given the file path "example/test/file.txt", it will return ".txt".
 //
-// GetExtension 返回文件的扩展名。
-// 例如，给定文件路径 "example/test/file.txt"，它将返回 ".txt"。
-//
 // Parameters:
-// - filePath: the path of the file (文件路径)
+// - filePath: the path of the file
 //
 // Returns:
-// - string: the file extension (文件扩展名)
+// - string: the file extension
 func GetExtension(filePath string) string {
 	return filepath.Ext(filePath)
 }
@@ -47,16 +38,12 @@ func GetExtension(filePath string) string {
 // It resolves the absolute path based on the current working directory.
 // If the operation fails, it returns an error.
 //
-// GetAbsolutePath 返回给定相对或类路径文件的绝对路径。
-// 它根据当前工作目录解析绝对路径。
-// 如果操作失败，它将返回一个错误。
-//
 // Parameters:
-// - path: the relative or classpath file (相对或类路径文件)
+// - path: the relative or classpath file
 //
 // Returns:
-// - string: the absolute path (绝对路径)
-// - error: if an error occurs (如果发生错误)
+// - string: the absolute path
+// - error: if an error occurs
 func GetAbsolutePath(path string) (string, error) {
 	absPath, err := filepath.Abs(path)
 	if err != nil {
@@ -70,16 +57,11 @@ func GetAbsolutePath(path string) (string, error) {
 // For Linux and macOS, it replaces / with _.
 // For unknown systems, it defaults to Linux-like behavior.
 //
-// CleanInvalidChars 根据当前操作系统清理文件名中的无效字符。
-// 对于 Windows，它将 \ / : * ? " < > | 替换为 _。
-// 对于 Linux 和 macOS，它将 / 替换为 _。
-// 对于未知系统，它默认为 Linux 类行为。
-//
 // Parameters:
-// - fileName: the name of the file to be cleaned (要清理的文件名)
+// - fileName: the name of the file to be cleaned
 //
 // Returns:
-// - string: the cleaned file name (清理后的文件名)
+// - string: the cleaned file name
 func CleanInvalidChars(fileName string) string {
 	switch runtime.GOOS {
 	case "windows":
@@ -98,16 +80,16 @@ func CleanInvalidChars(fileName string) string {
 	return fileName
 }
 
-// IsFileNameValid 根据当前操作系统检查文件名是否有效。
-// 对于 Windows，它检查是否存在 \ / : * ? " < > |。
-// 对于 Linux 和 macOS，它检查是否存在 /。
-// 对于未知系统，它默认为 Linux 类行为。
+// IsFileNameValid checks if the file name is valid based on the current operating system.
+// For Windows, it checks for the presence of \ / : * ? " < > |.
+// For Linux and macOS, it checks for the presence of /.
+// For unknown systems, it defaults to Linux-like behavior.
 //
 // Parameters:
-// - fileName: the name of the file to be checked (要检查的文件名)
+// - fileName: the name of the file to be checked
 //
 // Returns:
-// - bool: true if the file name is valid, false otherwise (如果文件名有效则返回 true，否则返回 false)
+// - bool: true if the file name is valid, false otherwise
 func IsFileNameValid(fileName string) bool {
 	switch runtime.GOOS {
 	case "windows":

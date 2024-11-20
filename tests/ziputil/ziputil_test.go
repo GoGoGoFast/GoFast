@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"VeloCore/pkg/util/ziputil"
+	"GoAllInOne/pkg/util/ziputil"
 	"github.com/stretchr/testify/assert"
 )
 

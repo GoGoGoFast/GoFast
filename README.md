@@ -1,5 +1,3 @@
-当然可以！以下是你提供的项目介绍的英文版本：
-
 # GoFast
 
 GoFast is a comprehensive Go language utility library designed to provide developers with a one-stop solution, saving development time and improving efficiency. Whether it's basic functionality or advanced tools, GoFast has you covered.
